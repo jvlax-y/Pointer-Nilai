@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+// Fungsi untuk menentukan keterangan nilai mata kuliah
+void Grade(int *nilai, int jumlahMataKuliah) {
+    for (int i = 0; i < jumlahMataKuliah; ++i) {
+        if (nilai[i] >= 90 && nilai[i] <= 100) {
+            cout << "Mata kuliah ke-" << i+1 << ": A\n";
+        } else if (nilai[i] >= 80 && nilai[i] < 90) {
+            cout << "Mata kuliah ke-" << i+1 << ": B\n";
+        } else if (nilai[i] >= 70 && nilai[i] < 80) {
+            cout << "Mata kuliah ke-" << i+1 << ": C\n";
+        } else if (nilai[i] >= 60 && nilai[i] < 70) {
+            cout << "Mata kuliah ke-" << i+1 << ": D\n";
+        } else if (nilai[i] >= 50 && nilai[i] < 60) {
+            cout << "Mata kuliah ke-" << i+1 << ": E\n";
+        } else {
+            cout << "Mata kuliah ke-" << i+1 << ": Tidak Lulus\n";
+        }
+    }
+}
+
+int main() {
+    int jumlahMataKuliah;
+
+    // Meminta pengguna untuk memasukkan jumlah mata kuliah
+    cout << "Masukkan jumlah mata kuliah: ";
+    cin >> jumlahMataKuliah;
+
+    // Alokasikan memori secara dinamis untuk array nilai
+    int *nilai = new int[jumlahMataKuliah];
+
+    // Meminta pengguna untuk memasukkan nilai untuk setiap mata kuliah
+    cout<< "Masukkan nilai untuk setiap mata kuliah:\n";
+    for (int i = 0; i < jumlahMataKuliah; ++i) {
+        cout << "Nilai mata kuliah ke-" << i+1 << ": ";
+        cin >> nilai[i];
+    }
+
+    // Memanggil fungsi untuk menentukan keterangan nilai
+    Grade(nilai, jumlahMataKuliah);
+
+    // Hapus memori yang dialokasikan secara dinamis
+    delete[] nilai;
+
+    return 0;
+}
